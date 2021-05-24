@@ -1,16 +1,16 @@
 # capstone
 
-##Prerequisties
+## Prerequisties
 
 -Python3.7
 -Flask
 
 
-##APIs
+## APIs
 
-###MOVIES
+### MOVIES
 
-####GET all MOVIES
+#### GET all MOVIES
 
 You can get all movies by using the `movies` endpoint including the title and the releasedate. You will also get the total number of movies
 
@@ -37,6 +37,6 @@ You can get all movies by using the `movies` endpoint including the title and th
   "total_movies": 2
 }`
 
-##Post Movies
+## Post Movies
 
 example request `curl -d '{"title":"James Bond", "releasedate":"01.05.1987"}' -H "Content-Type: application/json" -X POST http://localhost:8080/movies`
