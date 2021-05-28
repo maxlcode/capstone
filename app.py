@@ -13,7 +13,7 @@ def create_app(test_config=None):
   setup_db(app)
   CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-  db_drop_and_create_all()
+  #db_drop_and_create_all()
 
   # CORS Headers 
   @app.after_request
