@@ -6,6 +6,136 @@
 	},
 	"item": [
 		{
+			"name": "Set Up",
+			"item": [
+				{
+					"name": "/movies (access) Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"James Bond\",\r\n    \"releasedate\": \"1985-01-01\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors  (access) Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Sucess to be true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Created is number \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.created).to.be.an('number')\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Daniel Craig\",\r\n    \"age\": 46,\r\n    \"gender\": \"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImduanJTelFkenk1LTNwSWFoNEFwZCJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZXNob3B1ZGEuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwNzQ3ODMzZjlhODFhMDA2OTRlZGU4MSIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjIyMjMyNjYxLCJleHAiOjE2MjIzMTkwNjEsImF6cCI6InJ4ckw4NHQ5d1RubUxQakE4aWwyeG1VY0ZpVTlWUGZlIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJjcmVhdGU6YWN0b3JzIiwiY3JlYXRlOm1vdmllcyIsImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.dTyhR-Gf1CZ1vOpvHfCapdrb9GDT3_1rsUAFh8kF9uy76JpzW_AfPzH79t658m2h48LPT1lLqotVTTxKJmQhQ1VIaTpfyXFUIPHkNPU4F7Xsy2texhpWmFPZGzOFeoFPBJxBa5iFo6ZiVwytCNtdTfTzZYyZBWLHJO7TwBylXztf6b8sq7jCIdpmx72vm1-y1J9ss2XHODsSd1ZFDXscHNwTJcucCLzdyHCAX3n3qIRe0YgWG2UTkiaMWU6TXtq5Y901ESacZGOQpYe5lm678Mo5z7Udo51qxJ7RbfUj74VshnoUoMI2Qd4lV-n6ifoZWdT6ZVEOXAcKiMbpfMDtKA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Public",
 			"item": [
 				{
@@ -27,15 +157,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -62,15 +190,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -106,15 +232,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -150,18 +274,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/5",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
-								"5"
+								"1"
 							]
 						}
 					},
@@ -186,15 +308,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"1"
@@ -222,15 +342,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -257,15 +375,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"1"
@@ -302,15 +418,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -346,15 +460,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"1"
@@ -382,15 +494,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"1"
@@ -438,15 +548,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -478,15 +586,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"1"
@@ -523,15 +629,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -567,15 +671,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"2"
@@ -603,15 +705,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"2"
@@ -654,15 +754,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -694,15 +792,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"1"
@@ -739,15 +835,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -783,15 +877,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"2"
@@ -819,15 +911,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"2"
@@ -835,6 +925,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImduanJTelFkenk1LTNwSWFoNEFwZCJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZXNob3B1ZGEuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwYWJjMzFmMDk2YmRiMDA2OGY3YTMxZiIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjIyMjMyNTMwLCJleHAiOjE2MjIzMTg5MzAsImF6cCI6InJ4ckw4NHQ5d1RubUxQakE4aWwyeG1VY0ZpVTlWUGZlIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJyZWFkOmFjdG9ycyIsInJlYWQ6bW92aWVzIl19.O2ACVOjuxslUcDPFN7b5B2QSTj8dVVSBZgHbMkgrKM50eiVHfPPu9DfzIq48xNH25OYUg2U1SdkgdjQuxlUCHY8sshSK7R7bRP6LisvMxYkSukUd1wJ7F83NfkHfc3iabQzeunrWmcUlwIR6GrIPP1aTfdQNfJqMsxAxP-foSti1eg39JxltKwyzxAPBOn7t_iqqLiUG692A_VaECDBWP-vqQwD_5fRjWVXLr0bIMmFH8sGpCrR8LNdGqAFnW6l-nam9iRGyEUcK_qEpU33BujVtRPrwr3iPaPiX9mYqVJvj6TyocyF6Cn7fY_dRbpP4yYYmpCCQ7OA5bgAFRNEczg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -875,15 +995,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -915,15 +1033,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"1"
@@ -952,7 +1068,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"James Bond\",\r\n    \"releasedate\": \"01.01.1985\" \r\n}",
+							"raw": "{\r\n    \"title\":\"Chuck Norris\",\r\n    \"releasedate\": \"1957-06-12\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -960,15 +1076,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -1006,7 +1120,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Indiana Jones\",\r\n    \"releasedate\": \"08.12.1978\" \r\n}",
+							"raw": "{\r\n    \"title\":\"Indiana Jones\",\r\n    \"releasedate\": \"1957-06-12\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1014,18 +1128,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -1050,18 +1162,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -1101,15 +1211,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -1136,15 +1244,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"1"
@@ -1192,15 +1298,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -1238,7 +1342,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Indiana Jones\",\r\n    \"releasedate\": \"08.12.1978\" \r\n}",
+							"raw": "{\r\n    \"name\":\"Daniel Craig\",\r\n    \"age\": 46,\r\n    \"gender\": \"male\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1246,15 +1350,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"2"
@@ -1292,15 +1394,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"2"
@@ -1308,6 +1408,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImduanJTelFkenk1LTNwSWFoNEFwZCJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZXNob3B1ZGEuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwNzQ3ODVjOTg1ZTU0MDA3MWM5ODZiZSIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjIyMjMyNTg5LCJleHAiOjE2MjIzMTg5ODksImF6cCI6InJ4ckw4NHQ5d1RubUxQakE4aWwyeG1VY0ZpVTlWUGZlIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJjcmVhdGU6YWN0b3JzIiwiZGVsZXRlOmFjdG9ycyIsInJlYWQ6YWN0b3JzIiwicmVhZDptb3ZpZXMiLCJ1cGRhdGU6YWN0b3JzIiwidXBkYXRlOm1vdmllcyJdfQ.R1JXgR540mxHI0l0XDeK_8SJ6B5sJA6n3uMQpUgW6DIa1MJzBvDfqjelGuFa1tYFIUVphI2a5C3nR_bPXstIA3ohfb-SQ66DUbIgE4Ak1YgPcoajPEEYNwNbzne-VL3H2Wduor0teCEoPkIEzvXX-fsN9bTsVnT4UflSe5pPNLCc7Zs5vTS1sVis32UctzU4-Jga8cn3tOImvyWUkutnB2OfrJ4EuWPw_xEwbRlpBk5KHftl_pcat262_sOtH9hMt6JJQu6OxeTP-XvyPjapCQo7CLVCyH2eST-yLJ6TdBUD-PBFR46uOssue6FiKXgmgl17R0lajKMv7gzAAzqZDg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -1348,15 +1478,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -1388,15 +1516,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"1"
@@ -1413,7 +1539,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(403);\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1425,7 +1551,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"James Bond\",\r\n    \"releasedate\": \"01.01.1985\" \r\n}",
+							"raw": "{\r\n    \"title\":\"James Bond\",\r\n    \"releasedate\": \"1974-04-06\" \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1433,15 +1559,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies"
 							]
@@ -1479,7 +1603,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"Indiana Jones\",\r\n    \"releasedate\": \"08.12.1978\" \r\n}",
+							"raw": "{\r\n    \"title\":\"Indiana Jones\",\r\n    \"releasedate\": \"1974-04-06\"  \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1487,15 +1611,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"2"
@@ -1511,8 +1633,18 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(403);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Sucess to be true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deleted is number \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.deleted).to.be.an('number')\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1523,15 +1655,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/movies/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/movies/2",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"movies",
 								"2"
@@ -1574,15 +1704,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -1609,15 +1737,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/1",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/1",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
 								"1"
@@ -1665,15 +1791,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors"
 							]
@@ -1682,7 +1806,7 @@
 					"response": []
 				},
 				{
-					"name": "/actors/3   (access)",
+					"name": "/actors/3  (access)",
 					"event": [
 						{
 							"listen": "test",
@@ -1719,18 +1843,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/3",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -1765,22 +1887,50 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8080/actors/2",
-							"protocol": "http",
+							"raw": "https://capstone-maxlcode.herokuapp.com/actors/3",
+							"protocol": "https",
 							"host": [
-								"0",
-								"0",
-								"0",
-								"0"
+								"capstone-maxlcode",
+								"herokuapp",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"actors",
-								"2"
+								"3"
 							]
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImduanJTelFkenk1LTNwSWFoNEFwZCJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZXNob3B1ZGEuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwNzQ3ODMzZjlhODFhMDA2OTRlZGU4MSIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjIyMjMyNjYxLCJleHAiOjE2MjIzMTkwNjEsImF6cCI6InJ4ckw4NHQ5d1RubUxQakE4aWwyeG1VY0ZpVTlWUGZlIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJjcmVhdGU6YWN0b3JzIiwiY3JlYXRlOm1vdmllcyIsImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.dTyhR-Gf1CZ1vOpvHfCapdrb9GDT3_1rsUAFh8kF9uy76JpzW_AfPzH79t658m2h48LPT1lLqotVTTxKJmQhQ1VIaTpfyXFUIPHkNPU4F7Xsy2texhpWmFPZGzOFeoFPBJxBa5iFo6ZiVwytCNtdTfTzZYyZBWLHJO7TwBylXztf6b8sq7jCIdpmx72vm1-y1J9ss2XHODsSd1ZFDXscHNwTJcucCLzdyHCAX3n3qIRe0YgWG2UTkiaMWU6TXtq5Y901ESacZGOQpYe5lm678Mo5z7Udo51qxJ7RbfUj74VshnoUoMI2Qd4lV-n6ifoZWdT6ZVEOXAcKiMbpfMDtKA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
