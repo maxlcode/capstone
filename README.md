@@ -45,11 +45,13 @@ Role Based Access Control is implemented for all APIs (only the `/`(heartbeat) d
 **Casting Assistant**
 - Can view actors and movies
 -->`read:movies`,`read:actors`
+
 **Casting Director**
 - All permissions a Casting Assistant has and…
 - Add or delete an actor from the database
 - Modify actors or movies
 --> `create:actors`,`delete:actors`,`read:actors`,`update:actors`,`read:movies`,`update:movies`
+
 **Executive Producer**
 - All permissions a Casting Director has and…
 - Add or delete a movie from the database
