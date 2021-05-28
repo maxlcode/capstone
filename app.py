@@ -28,6 +28,10 @@ def create_app(test_config=None):
       )
     return response
 
+  # heartbeat to check if app is up and running
+  @app.route('/')
+  def heartbeat():
+        return jsonify({'message': 'Application is running'}), 200
   #----------------------------------------------
   #--------------MOVIE ENDPOINTS-----------------
   #----------------------------------------------
@@ -396,7 +400,7 @@ def create_app(test_config=None):
 
   return app
 
-APP = create_app()
+app = create_app()
 
 if __name__ == '__main__':
-    APP.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

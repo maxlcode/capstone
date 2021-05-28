@@ -1,6 +1,5 @@
 alembic==1.5.4
 appdirs==1.4.4
-astroid==2.2.5
 atomicwrites==1.4.0
 attrs==21.2.0
 awscliv2==1.5.2
@@ -29,14 +28,12 @@ psycopg2==2.8.6
 psycopg2-binary==2.8.6
 py==1.10.0
 pyasn1==0.4.8
-pycryptodome
+pycryptodome==3.10.1
 PyJWT==1.7.1
-pylint==2.3.1
 pyparsing==2.4.7
 pytest==6.2.2
 python-dateutil==2.8.1
 python-editor==1.0.4
-python-jose-cryptodome
 PyYAML==5.4.1
 rsa==4.7.2
 s3transfer==0.4.2

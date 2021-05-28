@@ -2,13 +2,8 @@
 
 ## Prerequisties
 
-<<<<<<< HEAD
 - Python3.7
 - Flask
-=======
--Python3.7
--Flask
->>>>>>> 1ec33803e3b4920df3a1846ad315edf57bebad4b
 
 
 ## APIs
@@ -24,7 +19,6 @@ You can get all movies by using the `movies` endpoint including the title and th
 ` curl -X GET http://localhost:8080/movies`
 
 **example response**
-<<<<<<< HEAD
 ```json
 {
   "movies": [
@@ -32,15 +26,6 @@ You can get all movies by using the `movies` endpoint including the title and th
       "id": 1, 
       "releasedate": "23.05.1957", 
       "title": "Terminator"
-=======
-
-`{
-  "movies": [
-    {
-      "id": 1, 
-      "releasedate": "20.04.1990", 
-      "title": "test"
->>>>>>> 1ec33803e3b4920df3a1846ad315edf57bebad4b
     }, 
     {
       "id": 2, 
@@ -50,7 +35,6 @@ You can get all movies by using the `movies` endpoint including the title and th
   ], 
   "success": true, 
   "total_movies": 2
-<<<<<<< HEAD
 }
 ```
 
@@ -95,10 +79,3 @@ This endpoint can be used to delete a specific movie. Therefore a DELETE request
   "success": true
 }
 ```
-=======
-}`
-
-## Post Movies
-
-example request `curl -d '{"title":"James Bond", "releasedate":"01.05.1987"}' -H "Content-Type: application/json" -X POST http://localhost:8080/movies`
->>>>>>> 1ec33803e3b4920df3a1846ad315edf57bebad4b
