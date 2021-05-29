@@ -22,9 +22,7 @@ Is it recommended to create a local virtual environment. Please see [python docs
 
 After virtual environment is created and activated, make sure to install dependencies with `pip install -r requirements.txt`
 
-Also make sure you have created a psql database and the link to the database is exported as environment variable `DATABASE_URL`
-
-`export DATABASE_URL=<database-connection-url>`
+Make sure to run the 'setup.sh' bash file in order to set all relevant environment variables 
 
 Also export tell the system where your flask app is located:
 
