@@ -254,10 +254,7 @@ This endpoint can be used to delete a specific actor. Therefore a `DELETE` reque
 
 Unittest can be performed with the `test_app.py' file.
 
-Please make sure you export the tokens
-`export assistent_token=<token>`
-`export director_token=<token>`
-`export producer_token=<token>`
+Please make sure you have exported the tokens by running the `setup.sh` bash script
 
 Then run the file by the command `python test_app.py`
 
